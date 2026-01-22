@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crop Yield Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Crop Yield Prediction System</h2>
+
+    <form action="/predict" method="post">
+        <input type="number" step="0.1" name="rainfall" placeholder="Rainfall (mm)" required>
+        <input type="number" step="0.1" name="temperature" placeholder="Temperature (°C)" required>
+
+        <select name="soil">
+            <option>Loamy</option>
+            <option>Black</option>
+            <option>Clayey</option>
+            <option>Sandy</option>
+            <option>Red</option>
+        </select>
+
+        <select name="crop">
+            <option>Rice</option>
+            <option>Wheat</option>
+            <option>Maize</option>
+            <option>Cotton</option>
+            <option>Sugarcane</option>
+            <option>Groundnut</option>
+            <option>Apple</option>
+        </select>
+
+        <input type="number" step="0.1" name="fertilizer" placeholder="Fertilizer (kg/hectare)" required>
+        <input type="number" step="0.1" name="area" placeholder="Area (hectares)" required>
+
+        <button type="submit">Predict Yield</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        Predicted Yield: {{ prediction }} tons/hectare
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
